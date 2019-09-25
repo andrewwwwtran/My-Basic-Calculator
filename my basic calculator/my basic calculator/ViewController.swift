@@ -10,63 +10,101 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //MARK: Properties
-    @IBOutlet weak var answerLabel: UILabel!
+    // MARK: Properties
+    @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var historyLabel: UILabel!
+    var history = [String]()
     var previousNumber:Double = 0
     var currentNumber:Double = 0
     var operation = 0
+    var operatorButtonPress = false
+    var equalButtonPress = false
     
-    //MARK: Actions
-    @IBAction func numButton(_ sender: UIButton) {
+    // MARK: Actions
+    @IBAction func numberButton(_ sender: UIButton) {
         
-        //concatonate numbers for display
-        answerLabel.text = answerLabel.text! + String(sender.tag)
-        
-        //save the number for operations
-        currentNumber = Double(answerLabel.text!)!
-        
+        // check for new number input
+        if(operatorButtonPress == true){
+            //empty display
+            displayLabel.text = String(sender.tag)
+            historyLabel.text! += String(sender.tag)
+            //save display to variable
+            if(displayLabel.text != "" ){
+                currentNumber = Double(displayLabel.text!)!
+                
+            }
+            operatorButtonPress = false
+        }else if(equalButtonPress == true){
+            // when equal button was pressed
+            // clear display and history on new number press
+            displayLabel.text = ""
+            historyLabel.text = ""
+            equalButtonPress = false
+            
+            // append new number
+            displayLabel.text = String(sender.tag)
+            historyLabel.text! += String(sender.tag)
+        }else{
+            // concatonate numbers for display and history
+            displayLabel.text! += String(sender.tag)
+            historyLabel.text! += String(sender.tag)
+            
+            // save the number for operations
+            currentNumber = Double(displayLabel.text!)!
+        }
     }
     
     @IBAction func operatorButton(_ sender: UIButton) {
         
-        //check if display is not empty
-        if(answerLabel.text != ""){
-            //if operator button is clicked
-            //save current number
-            previousNumber = currentNumber
-            //prep for another number for input
-            historyLabel.text = String(previousNumber)
+        // check if display is not empty and button pressed isnt equal
+        if(displayLabel.text != "" && sender.tag != 13){
+            // if operator button is clicked
+            // save number
+            previousNumber = Double(displayLabel.text!)!
             if(sender.tag == 17){
-                //divide
+                // divide
                 historyLabel.text! += " / "
             }else if(sender.tag == 16){
-                //multiply
+                // multiply
                 historyLabel.text! += " x "
             }else if(sender.tag == 15){
-                //subtract
+                // subtract
                 historyLabel.text! += " - "
             }else if(sender.tag == 14){
-                //addition
+                // addition
                 historyLabel.text! += " + "
             }
             
-            //save operation
+            //operator button was pressed
+            operatorButtonPress = true
+            
+            // save operation for when user presses equals
             operation = sender.tag
             
         }else if(sender.tag == 13){
-            //do operations
+            // equal button
+            historyLabel.text! += " = "
+            // do operations
             if(operation == 17){
+                // divide
                 currentNumber = previousNumber / currentNumber
             }else if(operation == 16){
+                // multiply
                 currentNumber = previousNumber * currentNumber
             }else if(operation == 15){
+                // subtract
                 currentNumber = previousNumber - currentNumber
-            }else if(operation == 13){
+            }else if(operation == 14){
+                // add
                 currentNumber = previousNumber + currentNumber
             }
+            historyLabel.text! += String(currentNumber)
+            displayLabel.text = String(currentNumber)
             
+            // save into history
+            history.append(historyLabel.text!)
             
+            equalButtonPress = true
         }
         
     }
@@ -86,38 +124,43 @@ class ViewController: UIViewController {
             currentNumber = 1 / currentNumber
         }
         // replace label for display
-        answerLabel.text = String(currentNumber)
+        displayLabel.text = String(currentNumber)
         
     }
     
     @IBAction func eraseButton(_ sender: UIButton) {
         
         if(sender.tag == 19){
-            //clear display and reset saved number
-            answerLabel.text = ""
+            // clear display and reset saved number
+            displayLabel.text = ""
+            historyLabel.text = ""
             currentNumber = 0
         }
         if(sender.tag == 18){
-            //clear last input number
-            //check if display has numbers
-            if(answerLabel.text != ""){
-                answerLabel.text?.removeLast()
+            // clear last input number
+            // check if display has numbers
+            if(displayLabel.text != ""){
+                displayLabel.text?.removeLast()
+                historyLabel.text?.removeLast()
             }
         }
         if(sender.tag == 20){
-            //clear everthing
-            answerLabel.text = ""
-            //clear history
-            
+            // clear everthing
+            displayLabel.text = ""
+            // clear history
+            historyLabel.text = ""
+            history.removeAll()
         }
         
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // start with cleared label
-        answerLabel.text = ""
+        displayLabel.text = ""
         historyLabel.text = ""
     }
     
