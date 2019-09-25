@@ -61,6 +61,7 @@ class ViewController: UIViewController {
             // if operator button is clicked
             // save number
             previousNumber = Double(displayLabel.text!)!
+            // append to history label
             if(sender.tag == 17){
                 // divide
                 historyLabel.text! += " / "
@@ -100,6 +101,7 @@ class ViewController: UIViewController {
             }
             historyLabel.text! += String(currentNumber)
             displayLabel.text = String(currentNumber)
+            operation = 0
             
             // save into history
             history.append(historyLabel.text!)
@@ -135,9 +137,10 @@ class ViewController: UIViewController {
             displayLabel.text = ""
             historyLabel.text = ""
             currentNumber = 0
+            operation = 0
         }
         if(sender.tag == 18){
-            // clear last input number
+            // delete last input number
             // check if display has numbers
             if(displayLabel.text != ""){
                 displayLabel.text?.removeLast()
@@ -147,6 +150,7 @@ class ViewController: UIViewController {
         if(sender.tag == 20){
             // clear everthing
             displayLabel.text = ""
+            operation = 0
             // clear history
             historyLabel.text = ""
             history.removeAll()
@@ -154,6 +158,14 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func history(_ sender: UIButton) {
+        // display the history
+        if(!history.isEmpty){
+            for items in history{
+                print("\(items) + \n")
+            }
+        }
+    }
     
     
     override func viewDidLoad() {
