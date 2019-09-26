@@ -2,9 +2,7 @@
 //  my_basic_calculatorUITests.swift
 //  my basic calculatorUITests
 //
-//  Created by Andrew Tran on 9/24/19.
-//  Copyright © 2019 Andrew Tran. All rights reserved.
-//
+
 
 import XCTest
 

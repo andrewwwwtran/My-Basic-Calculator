@@ -16,6 +16,7 @@
 		49C6AE27233AB6710039DE37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49C6AE25233AB6710039DE37 /* LaunchScreen.storyboard */; };
 		49C6AE32233AB6710039DE37 /* my_basic_calculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6AE31233AB6710039DE37 /* my_basic_calculatorTests.swift */; };
 		49C6AE3D233AB6710039DE37 /* my_basic_calculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6AE3C233AB6710039DE37 /* my_basic_calculatorUITests.swift */; };
+		49E7474E233C97FF00E910E4 /* historyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7474D233C97FF00E910E4 /* historyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		49C6AE38233AB6710039DE37 /* my basic calculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "my basic calculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C6AE3C233AB6710039DE37 /* my_basic_calculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = my_basic_calculatorUITests.swift; sourceTree = "<group>"; };
 		49C6AE3E233AB6710039DE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49E7474D233C97FF00E910E4 /* historyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = historyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				49C6AE17233AB66F0039DE37 /* AppDelegate.swift */,
 				49C6AE19233AB66F0039DE37 /* SceneDelegate.swift */,
 				49C6AE1B233AB66F0039DE37 /* ViewController.swift */,
+				49E7474D233C97FF00E910E4 /* historyViewController.swift */,
 				49C6AE1D233AB66F0039DE37 /* Main.storyboard */,
 				49C6AE23233AB6710039DE37 /* Assets.xcassets */,
 				49C6AE25233AB6710039DE37 /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 				49C6AE1C233AB66F0039DE37 /* ViewController.swift in Sources */,
 				49C6AE18233AB66F0039DE37 /* AppDelegate.swift in Sources */,
 				49C6AE1A233AB66F0039DE37 /* SceneDelegate.swift in Sources */,
+				49E7474E233C97FF00E910E4 /* historyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

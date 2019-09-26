@@ -111,6 +111,12 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func signChangeButton(_ sender: UIButton) {
+        currentNumber = 0 - currentNumber
+        displayLabel.text = String(currentNumber)
+    }
+    
+    
     @IBAction func instantOperations(_ sender: UIButton) {
         if(sender.tag == 24){
             // percentage
@@ -166,7 +172,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
